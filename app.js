@@ -4,16 +4,18 @@ const bodyParser = require('body-parser');
 const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
-const mongoSanitize = require('express-mongo-sanitize');
-const helmet = require("helmet");
+const mongoSanitize = require('express-mongo-sanitize'); // package pour prevenir des attaques par injection
+const helmet = require("helmet"); // package pour les headers
 
 const app = express();
 
 require('dotenv').config();
 const user = process.env.DB_USER;
 const pass = process.env.DB_PASSWORD;
+const host = process.env.DB_HOST;
+const name = process.env.DB_NAME;
 // mongoose connect
-mongoose.connect(`mongodb+srv://${user}:${pass}@p6.argo7.mongodb.net/P6?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${user}:${pass}@${host}/${name}?retryWrites=true&w=majority`,
     { useNewUrlParser: true,
      useUnifiedTopology: true 
     })

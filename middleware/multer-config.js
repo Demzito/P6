@@ -19,4 +19,3 @@ const storage = multer.diskStorage({
 
 module.exports = multer({storage: storage}).single('image'); // on exporte multer en lui passant notre constante storage
 // single indique que l'on va gérer uniquement le téléchargement d'image
-// il faut maintenant modifier les routes sauces car la structure des fichier n'est pas JSON
